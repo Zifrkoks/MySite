@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MySite.Models.Product>
+@{
+    ViewData["Title"] = "Каталог товаров";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<h2>продукты</h2>
+<table class="table">
+    <thead>
+        <tr class="bg-info">
+            <td>прикалюхи</td>
+            <td>рейтинг</td>
+            <td>Цена</td>
+            <td></td>
+
+        </tr>
+    </thead>
+    @foreach (var Product in Model)
+    {
+        <tr>
+            <td>@Product.Name</td>
+            <td>@Product.Rating</td>
+            <td>@Product.Price</td>
+            <td><a href="~/Home/Buy/@Product.ProductId">Купить</a></td>
+        </tr>
+    }
+</table>

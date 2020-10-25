@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "заполнение заказа";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h3>Форма оформления покупки</h3>
+<p>Для оформления покупки заполните следующие поля:</p>
+<form method="post" class="form-horizontal" role="form">
+
+    <input type="hidden" value="@ViewBag.ProductId" name="ProductId" />
+    <table>
+        <tr>
+            <td>Имя:</td>
+            <td><input type="text" name="ClientName" /> </td>
+        </tr>
+        <tr>
+            <td>Адрес:</td>
+            <td><input type="text" name="Address" /></td>
+        </tr>
+        <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+    </table>
+</form>
