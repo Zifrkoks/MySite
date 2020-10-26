@@ -24,10 +24,11 @@ namespace MySite.Controllers
             return View(db.Products.ToList());
         }
         [HttpGet]
-        public IActionResult Buy(int? id)
+        public IActionResult Buy(int? id, Client client)
         {
             if (id == null) return RedirectToAction("Products");
             ViewBag.ProductId = id;
+            ViewBag.client = client;
             return View();
         }
         [HttpPost]
@@ -44,14 +45,6 @@ namespace MySite.Controllers
                 return "какой то пиздец серверу: " + ex.ToString();
             };
         }
-        public IActionResult Registration()
-        {
-
-            return View();
-        }
-        public IActionResult Auth()
-        {
-            return View();
-        }
+        
     }
 }

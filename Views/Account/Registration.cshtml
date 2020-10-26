@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Регистрация";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+    <form method="post" action="~/Account/Success">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Email">
+            <small id="emailHelp" class="form-text text-muted">Он будет использоваться для входа и подтверждения аккаунта</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Пароль</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+        </div>
+        <div class="form-group">
+            <label for="Name">Имя</label>
+            <input type="text" class="form-control" id="Name" name="Name">
+        </div>
+        <div class="form-group">
+            <label for="Surname">Фамилия</label>
+            <input type="text" class="form-control" id="Surname" name="Surname">
+        </div>
+        <div class="form-group">
+            <label for="Address">Адрес</label>
+            <input type="text" class="form-control" id="Surname" name="Address">
+        </div>
+        <div class="form-group">
+            <label for="PhoneNamber">Номер телефона</label>
+            <input type="text" class="form-control" id="PhoneNamber" name="ContactNamber">
+        </div>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+
+    </form> 
+
