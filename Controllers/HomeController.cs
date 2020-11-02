@@ -4,14 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MySite.Models;
+using MySite.Domain;
 
 namespace MySite.Controllers
 {
     public class HomeController : Controller
     {
-        DataContext db;
+        DataManager db;
         
-        public HomeController(DataContext context)
+        public HomeController(DataManager context)
         {
             db = context;
         }
@@ -21,7 +22,7 @@ namespace MySite.Controllers
         }
         public IActionResult Products()
         {
-            return View(db.Products.ToList());
+            return View(db.Products.GetAllProducts());
         }
         [HttpGet]
         public IActionResult Buy(int? id, Client client)
@@ -32,18 +33,10 @@ namespace MySite.Controllers
             return View();
         }
         [HttpPost]
-        public string Buy(Order order)
+        public IActionResult Buy(Order order)
         {
-            db.Orders.Add(order);
-            try
-            {
-                db.SaveChanges();
-                return "Спасибо, " + order.ClientName + ", за покупку!";
-            }
-            catch(Exception ex){
-                Console.WriteLine(ex.ToString());
-                return "какой то пиздец серверу: " + ex.ToString();
-            };
+            db.Orders.AddOrder(order);
+            return View();
         }
         
     }

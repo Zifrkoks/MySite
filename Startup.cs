@@ -10,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MySite.Models;
 using Microsoft.Extensions.Configuration;
+using MySite.Domain.Interfaces;
+using MySite.Domain.Repository;
+using MySite.Domain;
 
 namespace MySite
 {
@@ -27,6 +30,10 @@ namespace MySite
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<DataManager>();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
         }

@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MySite.Models;
+using MySite.Domain;
+using MySite.Domain.Repository;
 
 namespace MySite.Controllers
 {
     public class AccountController : Controller
     {
-        DataContext db;
-        public AccountController(DataContext context)
+        DataManager db;
+        public AccountController(DataManager context)
         {
             db = context;
         }
@@ -22,21 +24,8 @@ namespace MySite.Controllers
         [HttpPost]
         public IActionResult Success(Client client)
         {
-
-            if (client != null)
-            {
-                try
-                {
-                    db.Clients.Add(client);
-                    db.SaveChanges();
+                    db.Clients.AddClient(client);
                     return View();
-                }
-                catch
-                {
-                    return RedirectToAction("Registration");
-                }
-            }
-            else return RedirectToAction("Registration");
         }
         /*public IActionResult Auth()
         {
